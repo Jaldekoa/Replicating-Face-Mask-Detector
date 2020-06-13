@@ -20,7 +20,7 @@ baseModel = tf.keras.applications.MobileNetV2(weights="imagenet", include_top=Fa
 baseModel.trainable = False
 
 model = tf.keras.Sequential([
-    tf.keras.layers.Lambda(tf.keras.applications.xception.preprocess_input, name='preprocessing', input_shape=(HEIGHT, WIDTH, RGB)),
+    tf.keras.layers.Lambda(tf.keras.applications.mobilenet_v2.preprocess_input, name='preprocessing', input_shape=(HEIGHT, WIDTH, RGB)),
     baseModel,
     tf.keras.layers.AveragePooling2D(pool_size=(7, 7)),
     tf.keras.layers.Flatten(name="flatten"),
